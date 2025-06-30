@@ -1,0 +1,20 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        temp = ""
+        best = 0
+        for char in s:
+            if char not in temp:
+                temp += char
+                if len(temp) > best:
+                    best = len(temp)
+            else:
+                while True:
+                    temp = temp[1:]
+                    if char not in temp:
+                        temp += char
+                        break
+        return best
